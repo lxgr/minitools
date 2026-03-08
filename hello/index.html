@@ -68,6 +68,7 @@
 
       <section class="card" aria-live="polite">
         <p><strong>Phone check:</strong> tap the button to verify touch interactions.</p>
+        <p id="inputType" class="muted">Input mode: checking…</p>
         <button id="tapButton" type="button">Tap me</button>
         <p id="tapCount">Taps: 0</p>
         <p id="lastTap" class="muted">Last tap: not yet</p>
@@ -78,6 +79,10 @@
       const tapButton = document.getElementById("tapButton");
       const tapCount = document.getElementById("tapCount");
       const lastTap = document.getElementById("lastTap");
+      const inputType = document.getElementById("inputType");
+
+      const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+      inputType.textContent = coarsePointer ? "Input mode: touch-friendly pointer detected" : "Input mode: fine pointer detected";
 
       let count = 0;
 
